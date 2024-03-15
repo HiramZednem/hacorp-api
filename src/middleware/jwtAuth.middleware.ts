@@ -9,7 +9,7 @@ export const accessTokenAuth = (req: Request, res: Response, next: NextFunction)
     }
 
     try {
-        const decoded = jwt.verify(accessToken, MY_SECRET as string) as any;
+        jwt.verify(accessToken, MY_SECRET as string) as any;
         next();
     } catch (err) {
         return res.status(401).json({ message: "Invalid access token" });
