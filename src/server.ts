@@ -36,6 +36,7 @@ export class Server {
 
     this.app.use('/api/task', routes.TaskRoute);
     this.app.use('/api/user', routes.UserRoute);
+    this.app.use('/api/tdd', routes.TddRoute);
   }
 
   listen(){

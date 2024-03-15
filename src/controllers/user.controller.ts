@@ -17,6 +17,21 @@ export const userController = {
         }
     },
 
+    getUser: async (req: Request, res: Response) => {
+        try {
+            const { id } = req.params;
+            const user = await userService.getUserById(id);
+            
+            if (!user) {
+                return res.status(404).json({ error: 'User not found' });
+            }
+            
+            return res.json(user);
+        } catch (error) {
+            res.status(500).json({ error: 'Failed to get user' });
+        }
+    },
+
     updateUser: async (req: Request, res: Response) => {
         try {
             const { id } = req.params;
@@ -61,7 +76,7 @@ export const userController = {
             }
 
 
-            const token = jwt.sign({ user }, MY_SECRET as string, { expiresIn: "1h" });
+            const token = jwt.sign({ user }, MY_SECRET as string, { expiresIn: "12h" });
             console.log(token);
 
             return res.status(200).json({ user, token });
@@ -70,13 +85,4 @@ export const userController = {
         }
     },
 
-    getAllTdd: async (req: Request, res: Response) => {
-        try {
-            const { id } = req.params;
-            const tdd = await userService.getAllTdd(id);
-            res.json(tdd);
-        } catch (error) {
-            res.status(500).json({ error: 'Failed to get TDDs' });
-        }
-    }
 };

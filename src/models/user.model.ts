@@ -7,7 +7,7 @@ const userSchema: Schema = new Schema({
     password: { type: String, required: true },
     budgets: [{ type: Schema.Types.ObjectId, ref: 'Budget' }],
     transactions: [{ type: Schema.Types.ObjectId, ref: 'Transaction' }],
-    tdds: [{ type: Schema.Types.ObjectId, ref: 'Tdd' }],
+    tdd: [{ type: Schema.Types.ObjectId, ref: 'Tdd' }],
 });
 
 export const UserModel = model('User', userSchema);

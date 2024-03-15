@@ -1,22 +1,19 @@
-import { UserModel } from '../models';
+import { TddModel, UserModel } from '../models';
 
 export const userService = {
     createUser: async (entity: object) => {
         return await UserModel.create(entity);
     },
 
-    updateUser: async (id: string, body: object) => {
-        return await UserModel.findByIdAndUpdate(id, body, { new: true });
+    getUserById: async (id: string) => { 
+        return await UserModel.findById(id).populate('tdd'); 
     },
 
-    getAllTdd: async (id: string) => {
-        const user = await UserModel.findById(id).populate('tdd');
-        if (!user) {
-            throw new Error('User not found');
-        }
-        return user.tdd;
+    updateUser: async (id: string, body: object) => {
+        return await UserModel.findByIdAndUpdate(id, body, { new: true }).populate('tdd');
     },
+
     getUserByEmail: async (email: string) => {
-        return await UserModel.findOne({ email });
+        return await UserModel.findOne({ email }).populate('tdd');
     },
 };
