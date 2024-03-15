@@ -1,4 +1,5 @@
-import { TddModel, UserModel } from '../models';
+import { UserModel } from '../models';
+
 
 export const userService = {
     createUser: async (entity: object) => {

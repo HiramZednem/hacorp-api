@@ -1,6 +1,4 @@
-import { Request, Response } from 'express';
 import { BudgetModel, UserModel } from '../models';
-
 
 
 export const budgetService = {

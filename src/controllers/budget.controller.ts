@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { BudgetModel } from '../models';
 import { budgetService } from '../services';
 
 export const budgetController = {

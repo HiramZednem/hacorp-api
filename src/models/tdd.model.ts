@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
+
 const tddSchema: Schema = new Schema({
     name: { type: String, required: true },
     amount: { type: Number, required: true },
