@@ -6,3 +6,4 @@ if(process.env.NODE_ENV !== 'production'){
 
 export const PORT = process.env.PORT;
 export const MONGO_URI = process.env.MONGO_URI;
+export const MY_SECRET = process.env.MY_SECRET;

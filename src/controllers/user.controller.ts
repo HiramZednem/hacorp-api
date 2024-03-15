@@ -1,6 +1,9 @@
 import { Request, Response } from 'express';
 import { userService } from '../services/';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+import { MY_SECRET } from '../config';
 
 export const userController = {
     createUser: async (req: Request, res: Response) => {
@@ -56,7 +59,12 @@ export const userController = {
             if (!passwordMatch) {
                 return res.status(401).json({ error: 'Invalid password' });
             }
-            res.status(200).json(user);
+
+
+            const token = jwt.sign({ user }, MY_SECRET as string, { expiresIn: "1h" });
+            console.log(token);
+
+            return res.status(200).json({ user, token });
         } catch (error) {
             res.status(500).json({ error: 'Failed to login' });
         }
