@@ -16,15 +16,7 @@ export const userService = {
         }
         return user.tdd;
     },
-    login: async (email: string, password: string) => {
-        const user = await UserModel.findOne({ email });
-        if (!user) {
-            throw new Error('Invalid email or password');
-        }
-        const isValidPassword = await user.comparePassword(password);
-        if (!isValidPassword) {
-            throw new Error('Invalid email or password');
-        }
-        return user;
-    }
+    getUserByEmail: async (email: string) => {
+        return await UserModel.findOne({ email });
+    },
 };
