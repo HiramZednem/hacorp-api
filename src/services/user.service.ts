@@ -9,18 +9,33 @@ export const userService = {
     getUserById: async (id: string) => { 
         return await UserModel.findById(id)
                                 .populate('tdd')
-                                .populate('budgets');
+                                .populate({
+                                    path: 'budgets',
+                                    populate: {
+                                        path: 'categories'
+                                    }
+                                })
     },
 
     updateUser: async (id: string, body: object) => {
         return await UserModel.findByIdAndUpdate(id, body, { new: true })
                                 .populate('tdd')
-                                .populate('budgets');
+                                .populate({
+                                    path: 'budgets',
+                                    populate: {
+                                        path: 'categories'
+                                    }
+                                })
     },
 
     getUserByEmail: async (email: string) => {
         return await UserModel.findOne({ email })
                                 .populate('tdd')
-                                .populate('budgets');
+                                .populate({
+                                    path: 'budgets',
+                                    populate: {
+                                        path: 'categories'
+                                    }
+                                })
     },
 };
