@@ -1,5 +1,5 @@
-import mongoose,{connect} from 'mongoose';
-import {MONGO_URI} from '../config';
+import { MONGO_URI } from '../config';
+import mongoose, { connect } from 'mongoose';
 
 export const connectDB = ()=>{
   mongoose.set('strictQuery', true);

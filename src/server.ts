@@ -1,14 +1,13 @@
-import express,{Express} from 'express';
+import express, { Express } from 'express';
 import morgan from 'morgan';
-
-
-import {connectDB} from './database';
-import {PORT} from './config'
-import {routes} from './routes'
+import { connectDB } from './database';
+import { PORT } from './config'
+import { routes } from './routes'
 import cors from 'cors';
 
-export class Server{
-  private app:Express;
+
+export class Server {
+  private app: Express;
 
   constructor(){
     this.app = express();
