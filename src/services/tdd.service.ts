@@ -1,6 +1,4 @@
-import { get } from 'mongoose';
-import { TddModel } from '../models/tdd.model';
-import { UserModel } from '../models';
+import { TddModel, UserModel } from '../models';
 
 export const tddService = {
     createTdd: async (userId: string, entity: object) => {
@@ -12,7 +10,6 @@ export const tddService = {
         const newTdd = await TddModel.create(entity);
         user.tdd.push(newTdd._id);
         await user.save();
-        console.log(user);
         return newTdd;
     },
 
@@ -25,6 +22,15 @@ export const tddService = {
     },
 
     deleteTdd: async (id: string) => {
-        return await TddModel.findByIdAndDelete(id).populate('transactions');;
+        const tdd = await TddModel.findById(id);
+        if (!tdd) {
+            throw new Error('Tdd not found');
+        }
+
+        const user = await UserModel.findById(tdd.userId);
+        user!.tdd.pull(tdd._id);
+        await user!.save();
+
+        return await TddModel.deleteOne({ _id: id });
     },
 };
