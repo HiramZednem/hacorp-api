@@ -15,6 +15,7 @@ export const userService = {
                                         path: 'categories'
                                     }
                                 })
+                                .populate('transactions');
     },
 
     updateUser: async (id: string, body: object) => {
@@ -26,6 +27,7 @@ export const userService = {
                                         path: 'categories'
                                     }
                                 })
+                                .populate('transactions');
     },
 
     getUserByEmail: async (email: string) => {
@@ -37,5 +39,6 @@ export const userService = {
                                         path: 'categories'
                                     }
                                 })
+                                .populate('transactions');
     },
 };

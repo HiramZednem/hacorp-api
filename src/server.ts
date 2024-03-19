@@ -38,6 +38,7 @@ export class Server {
     this.app.use('/api/tdd', routes.TddRoute);
     this.app.use('/api/budget', routes.BudgetRoute);
     this.app.use('/api/category', routes.CategoryRoute);
+    this.app.use('/api/transaction', routes.TransactionRoute);
   }
 
   listen(){
