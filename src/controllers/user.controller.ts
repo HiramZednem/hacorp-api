@@ -13,7 +13,7 @@ export const userController = {
             const user = await userService.createUser({ name, email, password: hashedPassword });
             return res.status(201).json(user);
         } catch (error) {
-            res.status(500).json({ error: 'Failed to create user' });
+            res.status(500).json({ error: 'Failed to create new user' });
         }
     },
 
@@ -28,7 +28,7 @@ export const userController = {
             
             return res.json(user);
         } catch (error) {
-            res.status(500).json({ error: 'Failed to get user' });
+            res.status(500).json({ error: 'Failed to get the user' });
         }
     },
 
@@ -59,7 +59,7 @@ export const userController = {
             
             res.json(user);
         } catch (error) {
-            res.status(500).json({ error: 'Failed to update user' });
+            res.status(500).json({ error: 'Failed to update the user' });
         }
     },
 

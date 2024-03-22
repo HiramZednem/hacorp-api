@@ -11,7 +11,6 @@ export class Server {
 
   constructor(){
     this.app = express();
-    connectDB();
     this.configuration();
     this.middlewares();
     this.routes();
