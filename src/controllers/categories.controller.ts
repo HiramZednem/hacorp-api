@@ -15,7 +15,7 @@ export const categoriesController = {
 
             res.status(201).json(categorie);
         } catch (error) {
-            res.status(500).json({ error: 'Internal Server Error' });
+            res.status(500).json({ error: 'Internal Server Error Happens' });
         }
     },
 
@@ -42,12 +42,12 @@ export const categoriesController = {
             });
 
             if (!updatedCategory) {
-                return res.status(404).json({ error: 'Category not found' });
+                return res.status(404).json({ error: 'Category not found in App' });
             }
 
             res.json(updatedCategory);
         } catch (error) {
-            res.status(500).json({ error: 'Internal Server Error' });
+            res.status(500).json({ error: 'Internal Server Error Happen' });
         }
     },
 
@@ -58,7 +58,7 @@ export const categoriesController = {
             const deletedCategorie = await categoryService.deleteCategory(id);
 
             if (!deletedCategorie) {
-                return res.status(404).json({ error: 'Tdd not found' });
+                return res.status(404).json({ error: 'TDD not found' });
             }
 
             res.json(deletedCategorie);
