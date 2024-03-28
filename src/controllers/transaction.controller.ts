@@ -14,7 +14,7 @@ export const transactionController = {
         }
     },
 
-   updateTransaction: async (req: Request, res: Response) => {
+    updateTransaction: async (req: Request, res: Response) => {
         try {
             const { id } = req.params;
             const { tddId, categoryId, amount, description, date } = req.body;
@@ -63,7 +63,7 @@ export const transactionController = {
             const transactions = await transactionService.getTransactionByUserId(id);
             res.status(200).json(transactions);
         } catch (error: any) {
-            res.status(500).json({ error: "Internal Server Error"});
-        }      
+            res.status(500).json({ error: "Internal Server Error Happen" });
+        }
     }
 };
